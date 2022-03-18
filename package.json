@@ -1,0 +1,15 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha myapp.test.js"
+  },
+  "author": "Jtorres",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mocha": "^9.2.2"
+  }
+}
