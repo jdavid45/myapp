@@ -19,9 +19,3 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/TEST-*.xml'
-    failTaskOnFailedTests: true
