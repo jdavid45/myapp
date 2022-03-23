@@ -1,7 +1,8 @@
-const Todos = require('./myapp');
-const assert = require('assert').strict;
+const Todos = require('./myapp')
+const assert = require('assert').strict
+const fs = require ("fs")
 
-describe("integrarion test",function(){
+describe("integration test",function(){
     it("should be able to ad an complete TODOS",function(){
         let todos =new Todos()
         assert.strictEqual(todos.list().length,0)
@@ -27,6 +28,7 @@ describe("integrarion test",function(){
     );
     })
 })
+
 describe ("complete()",function(){
     it ("should fail if no TODOS",function(){
         let todos = new Todos()
@@ -37,3 +39,16 @@ describe ("complete()",function(){
         },expectedError)
     })
 })
+
+describe("saveToFile()", function() {
+    it("should save a single TODO", function() {
+        let todos = new Todos();
+        todos.add("save a CSV");
+        return todos.saveToFile().then(() => {
+            assert.strictEqual(fs.existsSync('todos.csv'), true)
+            let expectedFileContents = "Title,Completed\nsave a CSV,false\n"
+            let content = fs.readFileSync("todos.csv").toString()
+            assert.strictEqual(content, expectedFileContents)
+        });
+    });
+});

@@ -2,8 +2,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 const bodyParser = require("body-parser")
+const fs = require("fs").promises
 //const methodOverride = require("method-override")
 //const mongoose =require("mongoose")
+
+
 
 class Todos {
     constructor() {
@@ -39,7 +42,17 @@ class Todos {
             throw new Error ("No TODO was found in: ", {title});
         }
     }
+    
+    saveToFile() {
+        let fileContents = 'Title,Completed\n'
+        this.todos.forEach((todo) => {
+            fileContents += `${todo.title},${todo.completed}\n`
+        });
+
+        return fs.writeFile('todos.csv', fileContents)
+    }
 }
+
 
 module.exports = Todos;
 
