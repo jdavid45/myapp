@@ -15,6 +15,11 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- script: Npm@1
+    npm install
+    npm run build
+    npm test
+
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
