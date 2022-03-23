@@ -39,6 +39,7 @@ describe ("complete()",function(){
         },expectedError)
     })
 })
+<<<<<<< HEAD
 
 describe("saveToFile()", function() {
     it("should save a single TODO", function() {
@@ -52,3 +53,6 @@ describe("saveToFile()", function() {
         });
     });
 });
+=======
+--exit
+>>>>>>> 3be37f0a8ae45cfd030a6b99f4cc896c57881aff
