@@ -16,6 +16,11 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- script:
+    npm install
+    npm run build
+    npm test
+
 - task: Npm@1
   inputs:
     command: 'install'
