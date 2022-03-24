@@ -6,8 +6,6 @@ const fs = require("fs").promises
 //const methodOverride = require("method-override")
 //const mongoose =require("mongoose")
 
-
-
 class Todos {
     constructor() {
         this.todos = [
@@ -46,13 +44,10 @@ class Todos {
        }
     }
 }
-
-
 // module.exports = Todos;
 
 let quehacer =new Todos()
-
-//quehacer.add("lee manual ind930")
+//quehacer.add("lee el manual")
 // quehacer.add("leer manual bascula")
 // quehacer.add("leer manual bascula")
 
@@ -61,7 +56,6 @@ app.use(bodyParser.json())
 //app.use(methodOverride())
 
 const router=express.Router()
-
 
 router.get('/todo/list',function (req, res) {
     res.json(quehacer.list())
