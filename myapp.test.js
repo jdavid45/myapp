@@ -4,6 +4,7 @@ const request = require('supertest')
 const app = require('./myapp')
 const fs = require ("fs")
 const { exit } = require('process')
+const { describe } = require('mocha')
 
 // describe("integration test",function(){
 //     it("should be able to ad an complete TODOS",function(){
@@ -39,21 +40,21 @@ describe ("complete()",function(){
         const expectedError =new Error("no TODOs stored, add one")
 
         assert.throws(()=>{
-            todos.complete("no hay:/")
+            todos.complete("No hay tareas")
         },expectedError)
     })
 })
+describe("nombres no muy largos", function() {
+    it("error si la tarea es mas larga de 15", function() {
+        request(app).get('')
+        let todos = new Todos()
+        todos.add("leer manual bascula")
+        // el largo es de 19 
+        const expectedError =new Error("El nombre es muy largo")
 
-// describe("saveToFile()", function() {
-//     it("should save a single TODO", function() {
-//         let todos = new Todos();
-//         todos.add("save a CSV");
-//         return todos.saveToFile().then(() => {
-//             assert.strictEqual(fs.existsSync('todos.csv'), true)
-//             let expectedFileContents = "Title,Completed\nsave a CSV,false\n"
-//             let content = fs.readFileSync("todos.csv").toString()
-//             assert.strictEqual(content, expectedFileContents)
-//         });
-//     });
-// });
+        assert.throws(()=>{
+            todos.add("Nombre de tarea largo")
+        },expectedError)
+    })
+})
 --exit
