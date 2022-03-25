@@ -5,6 +5,7 @@ const app = require('./myapp')
 const fs = require ("fs")
 const { exit } = require('process')
 const { describe } = require('mocha')
+const lista =require("myapp.todos.json")
 
 // describe("integration test",function(){
 //     it("should be able to ad an complete TODOS",function(){
@@ -55,6 +56,7 @@ describe("nombres no muy largos", function() {
         assert.throws(()=>{
             todos.add("Nombre de tarea largo")
         },expectedError)
+        hacer prueba (assert =200)
     })
 })
 --exit

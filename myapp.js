@@ -61,6 +61,10 @@ router.get('/todo/list',function (req, res) {
     res.json(quehacer.list())
 })
 
+router.post('/todo/add',function (req, res) {
+    res.json(quehacer.add(req.body.tittle))
+})
+
 // router.pos('/todo/add',function (req, res) {
 //     res.json([JSON.stringify(todo.list())])
 // })
