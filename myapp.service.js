@@ -42,8 +42,34 @@ async function list() {
     }
 }
 
-async function complete(){
+async function del(){
+    try{
+        let sql_query ="DELETE FROM todo WHERE title=1"
+        let query = mysql.format(sql_query);
+        let [rows, fields] = await connection.query(query);
+
+        return {
+            data: rows,
+            status: 200,
+        }
+
+    } catch (error) {
+        return {
+            message: 'Algo salió mal',
+            status: 500,
+        }
+    }
+}
+
+async function comp(){
     try {
+        if (object.keys(body).length===0){
+            return{
+                message: 'Agrega un ToDo primero',
+                status: 400
+            }
+        }
+
         let sqlquery= "UPDATE todo SET (completed) = 1 where title = (?)"
         let query =mysql.format(sql_query[body.title])
         await Connection.query(query)
