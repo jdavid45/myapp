@@ -1,4 +1,4 @@
-const conection = require('../config/myapp.db')
+const conection = require('/config/db')
 const Connection = require('mysql2/typings/mysql/lib/Connection')
 const bodyParser = require("body-parser")
 const fs = require("fs").promises
